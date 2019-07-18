@@ -1,27 +1,13 @@
 <?php
 
-class ThailandSurprise
-{
-    public $clothes;
-    private $balls;
+class FileDB {
+    private $file_name;
 
-
-    public function __construct () {
-        $this->balls = rand(0, 1);
-    }
-
-    public function attachBalls (){
-        $this->balls = true;
-    }
-
-    public function detachBalls (){
-        $this->balls = false;
+    function __construct($file_name)
+    {
+        $this->file_name = $file_name;
     }
 }
 
-$sijonas = new ThailandSurprise();
 
-$sijonas->clothes = 'miniskirt';
-
-var_dump($sijonas);
 ?>
