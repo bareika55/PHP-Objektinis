@@ -3,16 +3,25 @@
 class ThailandSurprise
 {
     public $clothes;
-    public $quantity;
-    public $color;
+    private $balls;
+
+
+    public function __construct () {
+        $this->balls = rand(0, 1);
+    }
+
+    public function attachBalls (){
+        $this->balls = true;
+    }
+
+    public function detachBalls (){
+        $this->balls = false;
+    }
 }
 
 $sijonas = new ThailandSurprise();
 
 $sijonas->clothes = 'miniskirt';
-$sijonas->quantity = 15;
-$sijonas->color = 'black & yellow';
-
 
 var_dump($sijonas);
 ?>
