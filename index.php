@@ -1,19 +1,18 @@
 <?php
 
-$thailandSurpise = [
-    'name' => 'miniskirt',
-];
-
-$clothes = new Item ('Miniskirt');
-
-class ThailandSurpise {
+class ThailandSurprise
+{
     public $clothes;
-
-    public function __construct($clothes)
-    {
-        $this->clothes = $clothes;
-    }
+    public $quantity;
+    public $color;
 }
 
-var_dump($clothes);
+$sijonas = new ThailandSurprise();
+
+$sijonas->clothes = 'miniskirt';
+$sijonas->quantity = 15;
+$sijonas->color = 'black & yellow';
+
+
+var_dump($sijonas);
 ?>
