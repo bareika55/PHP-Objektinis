@@ -16,15 +16,24 @@ class fileDB
         }
     }
 
-    public function getData($data)
+    public function getData()
     {
-        if ($data == null) {
-            return $this->load();
-        } else {
-            return $data;
+        if ($this->data == null) {
+            $this->load();
         }
+        return $this->data;
     }
-    
+
+    public function setData($data_array)
+    {
+        $this->data = $data_array;
+    }
+
+    public function save($data)
+    {
+        $encoded_json = json_encode($data);
+        file_put_contents('data.txt', $encoded_json);
+    }
 }
 
 ?>
