@@ -67,11 +67,16 @@ class fileDB
 
     public function insertRow($table_name, $row, $row_id = null)
     {
-        $this->data[$table_name] = $row;
-        if ($row_id == null) {
-            $this->data[$row] = $row_id;
+        if ($this->tableExists($table_name)) {
+            if ($row_id !== null) {
+                $this->data[$table_name][$row_id] = $row;
+            } else {
+                $this->data[$table_name][] = $row;
+            }
+
             return true;
         }
+
         return false;
     }
 
