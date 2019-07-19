@@ -36,7 +36,7 @@ class fileDB
 
     public function createTable($table_name)
     {
-        if (!isset($this->data[$table_name])) {
+        if (!$this->tableExists($table_name)) {
             $this->data[$table_name] = [];
             return true;
         }
@@ -48,7 +48,7 @@ class fileDB
         unset($this->data[$table_name]);
     }
 
-    public function tableExsists($table_name)
+    public function tableExists($table_name)
     {
         if (isset($this->data[$table_name])) {
             return true;
@@ -58,8 +58,23 @@ class fileDB
 
     public function truncateTable($table_name)
     {
-
+        if ($this->tableExists($table_name)) {
+            $this->data[$table_name] = [];
+            return true;
+        }
+        return false;
     }
+
+    public function insertRow($table_name, $row, $row_id = null)
+    {
+        $this->data[$table_name] = $row;
+        if ($row_id == null) {
+            $this->data[$row] = $row_id;
+            return true;
+        }
+        return false;
+    }
+
 }
 
 ?>
