@@ -4,6 +4,7 @@ class fileDB
 {
     private $file_name;
     private $data;
+
     public function load()
     {
         if (file_exists($this->file_name)) {
@@ -13,6 +14,7 @@ class fileDB
             }
         }
     }
+
     public function getData()
     {
         if ($this->data == null) {
@@ -20,23 +22,26 @@ class fileDB
         }
         return $this->data;
     }
+
     public function setData($data_array)
     {
         $this->data = $data_array;
     }
+
     public function save($data)
     {
         $encoded_json = json_encode($data);
         file_put_contents('data.txt', $encoded_json);
     }
 
-    public function createTable ($table_name) {
-        $table = [];
-        if (!empty($table)) {
-            return false;
+    public function createTable($table_name)
+    {
+        if (!isset($this->data[$table_name])) {
+            $this->data[$table_name] = [];
+            return true;
         }
-        return true;
+        return false;
     }
 }
-?>
+
 ?>
