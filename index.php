@@ -43,8 +43,22 @@ class fileDB
         return false;
     }
 
-    public function dropTable ($table_name) {
+    public function dropTable($table_name)
+    {
         unset($this->data[$table_name]);
+    }
+
+    public function tableExsists($table_name)
+    {
+        if (isset($this->data[$table_name])) {
+            return true;
+        }
+        return false;
+    }
+
+    public function truncateTable($table_name)
+    {
+
     }
 }
 
