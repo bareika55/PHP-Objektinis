@@ -42,6 +42,10 @@ class fileDB
         }
         return false;
     }
+
+    public function dropTable ($table_name) {
+        unset($this->data[$table_name]);
+    }
 }
 
 ?>
